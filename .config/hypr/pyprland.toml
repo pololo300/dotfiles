@@ -1,0 +1,15 @@
+[pyprland]
+hyprland_version = "0.41.0"
+plugins = ["scratchpads"]
+
+[scratchpads.yazi]
+command = "kitty --class kitty-dropterm yazi"
+class = "kitty-dropterm"  # check: hyprctl clients | grep class
+size = "90% 90%"  # size of the window relative to the screen size
+animation = "fromTop"
+
+[scratchpads.spotify]
+command = "spotify"
+class = "Spotify"  # check: hyprctl clients | grep class
+size = "90% 90%"  # size of the window relative to the screen size
+animation = "fromTop"

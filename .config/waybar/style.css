@@ -1,0 +1,94 @@
+@import "mocha.css";
+
+* {
+  font-family: JetBrains Mono;
+  font-size: 17px;
+  min-height: 0;
+  margin: 5px 1px 5px 1px;
+  color: @text;
+}
+
+#waybar {
+  background: #111111;
+  color: @text;
+  margin: 0px 0px 0px 0px;
+}
+
+#workspaces {
+  /* border-radius: 1rem; */
+  margin: 5px;
+  background-color: @surface0;
+  margin-top: 3px;
+}
+
+#workspaces button {
+  color: @lavender;
+  /* border-radius: 1rem; */
+  padding: 0.4rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  /* border-radius: 1rem; */
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  /* border-radius: 1rem; */
+}
+
+#custom-music,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#custom-lock,
+#network,
+#custom-power,
+#clock {
+  color: @blue;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight,
+#battery {
+  border-radius: 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+}
+
+#tray menu * {
+  font-size: 12px;
+  margin: 0px 1px 0px 1px;
+  color: @surface0;
+}
+
+#taskbar button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: @wb-color;
+  /* animation: tb_normal 20s ease-in-out 1; */
+}
