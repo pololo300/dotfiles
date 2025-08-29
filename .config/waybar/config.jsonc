@@ -4,14 +4,14 @@
   "spacing": 4,
   "modules-left": [
     "battery",
-    "network",
     "pulseaudio",
     "tray",
     "cpu",
     "backlight",
+    "idle_inhibitor",
   ],
   "modules-center": ["clock"],
-  "modules-right": ["wlr/taskbar"],
+  "modules-right": ["hyprland/workspaces", "wlr/taskbar"],
 
   "clock": {
     "format": "{:%H\n%M\n==\n%d\n%m}",
@@ -30,14 +30,6 @@
     "tooltip-format": "{capacity}%",
   },
 
-  "network": {
-    "format-wifi": "{icon}",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "tooltip-format": "{ifname} via {gwaddr}\n{essid} ({signalStrength}%)",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "⚠",
-  },
 
   "pulseaudio": {
     "format": "{icon}",
@@ -82,6 +74,26 @@
     "on-scroll-down": "brightnessctl set 1%-",
     "min-length": 1,
   },
+
+  "hyprland/workspaces": {
+      "disable-scroll": true,
+      // "rotate": ,
+      "all-outputs": true,
+      "active-only": false,
+      "on-click": "activate",
+      "disable-scroll": false,
+      "on-scroll-up": "hyprctl dispatch workspace -1",
+      "on-scroll-down": "hyprctl dispatch workspace +1",
+      "persistent-workspaces": {
+      }
+  },
+
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": ["", ""],
+      "on-click": "hyprctl dispatch toggleidle",
+      "tooltip-format": "Idle Inhibition: {state}"
+  }
 }
 
 
