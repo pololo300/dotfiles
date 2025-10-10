@@ -1,0 +1,5 @@
+set debuginfod enabled on
+
+define hook-next
+  refresh
+end

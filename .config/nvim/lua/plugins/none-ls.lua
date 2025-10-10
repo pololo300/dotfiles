@@ -1,24 +1,27 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- Customize None-ls sources
-
----@type LazySpec
 return {
-  "nvimtools/none-ls.nvim",
-  opts = function(_, opts)
-    -- opts variable is the default configuration table for the setup function call
-    -- local null_ls = require "null-ls"
+  'nvimtools/none-ls.nvim',
+  dependencies = {
+    'nvimtools/none-ls-extras.nvim',
+  },
+  config = function()
+    local null_ls = require 'null-ls'
 
-    -- Check supported formatters and linters
-    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+    null_ls.setup {
+      sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.completion.spell,
+      },
+    }
 
-    -- Only insert new sources, do not replace the existing ones
-    -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
-    opts.sources = require("astrocore").list_insert_unique(opts.sources, {
-      -- Set a formatter
-      -- null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
+    -- Enable format on save
+    local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = augroup,
+      pattern = '*',
+      callback = function()
+        vim.lsp.buf.format { async = false }
+      end,
     })
   end,
 }
