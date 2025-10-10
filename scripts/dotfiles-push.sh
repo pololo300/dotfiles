@@ -29,4 +29,5 @@ cp -f ~/.zshrc $DEST
 
 cd $DEST
 git add -A
+git commit -m="Auto update on $(date)$"
 
