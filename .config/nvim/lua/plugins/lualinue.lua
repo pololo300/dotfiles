@@ -1,18 +1,11 @@
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    options = {
-      theme = 'tokyonight',
-    }
-  end,
-  specs = {
-    {
-      'rebelot/heirline.nvim',
-      optional = true,
-      opts = function(_, opts)
-        opts.statusline = nil
-      end,
-    },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'rebelot/kanagawa.nvim',
   },
+  opts = function()
+    -- Or alternatively, different path to where you saved the 'minim' file, for example:
+    return require 'config.minim'
+  end,
 }

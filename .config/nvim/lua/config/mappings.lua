@@ -32,6 +32,7 @@ vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w><C-k>', { desc = 'Move focus to th
 vim.keymap.set('n', '<leader>q', '<cmd>close<CR>', { desc = 'Quit Window' })
 vim.keymap.set('n', '<leader>x', '<cmd>bd<CR>', { desc = 'Close Buffer' })
 vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
 
 vim.keymap.set('n', 'j', 'gj', { desc = 'Move down visually' })
 vim.keymap.set('n', 'k', 'gk', { desc = 'Move up visually' })
@@ -57,3 +58,7 @@ vim.keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>', { desc = 'Save current buffer' }
 -- Map Ctrl-a save all buffers
 vim.keymap.set('n', '<C-a>', '<cmd>wa<CR>', { desc = 'Save all buffer' })
 vim.keymap.set('i', '<C-a>', '<Esc><cmd>wa<CR>', { desc = 'Save all buffer' })
+
+-- Git diff
+vim.keymap.set('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', { desc = 'Open Diffview' })
+vim.keymap.set('n', '<leader>gc', '<cmd>DiffviewClose<CR>', { desc = 'Close Diffview' })

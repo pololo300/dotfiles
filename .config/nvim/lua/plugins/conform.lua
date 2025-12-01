@@ -10,23 +10,21 @@ return {
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
       mode = '',
-      desc = 'Format',
+      desc = '[F]ormat buffer',
     },
   },
   opts = {
     notify_on_error = false,
-    notify_no_formatters = true,
-    format_on_save = {
-      -- I recommend these options. See :help conform.format for details.
-      lsp_format = 'fallback',
-      timeout_ms = 500,
-    },
-    format_after_save = {
-      lsp_format = 'fallback',
-    },
+    format_on_save = function()
+      return nil
+    end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      json = { 'prettier' },
+      -- Conform can also run multiple formatters sequentially
+      python = { 'isort', 'autopep8' },
+      --
+      -- You can use 'stop_after_first' to run the first available formatter from the list
+      -- javascript = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 }

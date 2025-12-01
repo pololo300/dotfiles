@@ -33,4 +33,9 @@ return {
       vim.cmd.colorscheme 'catppuccin-frappe'
     end,
   },
+
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000,
+  },
 }
