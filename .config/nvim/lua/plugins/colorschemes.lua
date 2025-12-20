@@ -3,6 +3,12 @@ return {
   -- Change the name of the colorscheme plugin below, and then
   -- change the command in the config to whatever the name of that colorscheme is.
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --
+  {
+    'tribela/transparent.nvim',
+    event = 'VimEnter',
+    config = true,
+  },
 
   {
     'folke/tokyonight.nvim',
@@ -29,13 +35,17 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'catppuccin-frappe'
-    end,
   },
 
   {
     'olimorris/onedarkpro.nvim',
     priority = 1000,
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      vim.cmd 'colorscheme rose-pine'
+    end,
   },
 }

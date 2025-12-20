@@ -8,8 +8,6 @@ rsync $FLAGS ~/.zshrc $DEST
 rsync $FLAGS ~/code $DEST
 rsync $FLAGS ~/Documents $DEST
 rsync $FLAGS ~/PolVal $DEST
-rsync $FLAGS ~/tfg $DEST
-rsync $FLAGS ~/uni $DEST
 rsync $FLAGS ~/Zotero $DEST
 
 date > ~/code/scripts/last-sync

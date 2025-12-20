@@ -1,4 +1,4 @@
-- 1.1.14
+- 1.1.16
 - _NAME: MX Mechanical Mini
   _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert,
     thumb-scroll-mode, onboard_profiles, report_rate, report_rate_extended, pointer_speed, dpi, dpi_extended, speed-change, backlight_level, backlight_duration_hands_out,
@@ -25,7 +25,7 @@
     m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
   _battery: 4100
   _modelId: B03400000000
-  _sensitive: {divert-keys: ignore, reprogrammable-keys: false, smart-shift: true, thumb-scroll-invert: true}
+  _sensitive: {divert-keys: ignore, reprogrammable-keys: false, smart-shift: false, thumb-scroll-invert: true}
   _serial: 0DCF9C2E
   _unitId: 0DCF9C2E
   _wpid: B034
@@ -36,7 +36,7 @@
   hires-smooth-invert: false
   hires-smooth-resolution: false
   reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
-  scroll-ratchet: 2
-  smart-shift: 1
+  scroll-ratchet: 1
+  smart-shift: 4
   thumb-scroll-invert: true
   thumb-scroll-mode: false
