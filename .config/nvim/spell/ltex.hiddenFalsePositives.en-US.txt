@@ -1,2 +1,0 @@
-{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QIt was first introduced by Dinits, Karzanov and Lomonosov in \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
-{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qeach \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Discard \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
