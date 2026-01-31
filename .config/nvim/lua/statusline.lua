@@ -2,22 +2,22 @@ vim.pack.add({
 	{ src = "https://github.com/sschleemilch/slimline.nvim" },
 })
 require("slimline").setup({
-	style = 'fg',
+	style = "fg",
 	bold = true,
 	configs = {
 		path = {
 			hl = {
-				primary = 'Label',
+				primary = "Label",
 			},
 		},
 		git = {
 			hl = {
-				primary = 'Function',
+				primary = "Function",
 			},
 		},
 		filetype_lsp = {
 			hl = {
-				primary = 'String',
+				primary = "String",
 			},
 		},
 	},

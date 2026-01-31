@@ -1,11 +1,11 @@
-require 'colors'
-require 'mappings'
-require 'settings'
-require 'files'
-require 'lsp'
-require 'search'
-require 'autocomplete'
-require 'typing'
-require 'terminal'
-require 'statusline'
-
+require("mappings")
+require("settings")
+require("files")
+require("lsp")
+require("search")
+require("autocomplete")
+require("typing")
+require("terminal")
+require("statusline")
+require("git")
+require("colors")
