@@ -2,7 +2,6 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 })
 
@@ -12,6 +11,7 @@ require("mason-lspconfig").setup()
 vim.lsp.enable({
 	"lua_ls",
 	"pyright",
+	-- "basedpyright",
 	"prettier",
 	"ruff",
 	"stylua ",

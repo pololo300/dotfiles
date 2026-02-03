@@ -1,6 +1,8 @@
 vim.pack.add({
 	{ src = "https://github.com/sschleemilch/slimline.nvim" },
+	{ src = "https://github.com/j-hui/fidget.nvim" },
 })
+
 require("slimline").setup({
 	style = "fg",
 	bold = true,
@@ -22,3 +24,5 @@ require("slimline").setup({
 		},
 	},
 })
+
+require("fidget").setup()
