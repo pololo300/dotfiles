@@ -51,5 +51,4 @@ vim.keymap.set("i", "<C-a>", "<Esc><cmd>wa<CR>", { desc = "Save all buffer" })
 
 vim.keymap.set("n", "<leader>pu", vim.pack.update, { desc = "Plugin Update" })
 
-
-vim.keymap.set("n", "<Esc>", ":noh<CR>", {desc = "Clear Search Hilight"})
+vim.keymap.set("n", "<Esc>", ":noh<CR>", { desc = "Clear Search Hilight" })

@@ -2,6 +2,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
 })
 
 require("telescope").setup({
@@ -12,10 +13,13 @@ require("telescope").setup({
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 		},
+		["ui-select"] = {},
 	},
 })
 
 local builtin = require("telescope.builtin")
+require("telescope").load_extension("ui-select")
+
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })

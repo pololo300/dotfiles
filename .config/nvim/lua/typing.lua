@@ -12,6 +12,8 @@ require("scrollEOF").setup({})
 require("nvim-autopairs").setup()
 require("render-markdown").setup()
 require("ibl").setup()
+require("todo-comments").setup()
+
 
 require("Comment").setup()
 vim.keymap.set("n", "<leader>7", function()
@@ -21,4 +23,5 @@ vim.keymap.set("v", "<leader>7", function()
 	vim.api.nvim_feedkeys("gc", "v", true)
 end, { desc = "Toggle Line Comment" })
 
-require("todo-comments").setup()
+
+

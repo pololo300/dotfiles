@@ -8,15 +8,6 @@ vim.pack.add({
 require("mason").setup({})
 require("mason-lspconfig").setup()
 
-vim.lsp.enable({
-	"lua_ls",
-	"pyright",
-	-- "basedpyright",
-	"prettier",
-	"ruff",
-	"stylua ",
-})
-
 vim.diagnostic.config({ virtual_text = true })
 
 require("conform").setup({
@@ -24,6 +15,7 @@ require("conform").setup({
 		python = { "isort", "ruff_format" },
 		json = { "prettier" },
 		lua = { "stylua " },
+		markdown = { "prettier" },
 	},
 })
 
