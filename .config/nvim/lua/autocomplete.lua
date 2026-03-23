@@ -1,10 +1,7 @@
 vim.pack.add({
-	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/saghen/blink.cmp" },
-	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 })
 
-require("luasnip").setup({})
 require("blink.cmp").setup({
 	fuzzy = { implementation = "prefer_rust_with_warning" },
 	signature = { enabled = true },
@@ -44,13 +41,6 @@ require("blink.cmp").setup({
 	},
 
 	sources = {
-		default = { "lsp", "path", "snippets" },
-		providers = {
-			snippets = {
-				opts = {
-					friendly_snippets = true, -- default
-				},
-			},
-		},
+		default = { "lsp", "path" },
 	},
 })

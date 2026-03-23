@@ -1,4 +1,12 @@
-vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+-- Disable vim-tmux-navigator default mappings (especially terminal-mode).
+vim.g.tmux_navigator_no_mappings = 1
+
+vim.pack.add({
+	"https://github.com/folke/which-key.nvim",
+	"https://github.com/christoomey/vim-tmux-navigator",
+})
+
+
 
 require("which-key").setup({
 	spec = {

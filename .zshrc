@@ -1,3 +1,18 @@
+
+# quick launcher for tmux-sessionizer
+bindkey -s ^f "tmux-sessionizer\n"
+
+
+
+# Auto-attach / start tmux for interactive shells (don't run inside scripts)
+# Only run when connected to a real terminal and not already inside tmux.
+# Uses session name 'main' — adjust if you prefer another name.
+if [[ -t 1 && -n $PS1 && -z "$TMUX" ]]; then
+  if command -v tmux >/dev/null 2>&1; then
+    tmux attach-session -t main 2>/dev/null || tmux new-session -s main
+  fi
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -8,14 +23,11 @@ fi
 
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:/snap/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="nvim"
-
-
-
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -36,7 +48,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
+ 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
@@ -55,7 +67,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -119,7 +131,7 @@ rmvenv() {
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-eza)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -134,6 +146,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias tiler=~/tfg/tiler/target/release/tiler
 alias wake-server="wakeonlan 70:f3:95:05:b5:66"
+alias lgit="lazygit"
+alias ldoc="sudo /home/linuxbrew/.linuxbrew/bin/lazydocker"
 # in ~/.zshrc
 vpn() {
   ~/code/scripts/vpn.sh
@@ -159,8 +173,11 @@ function y() {
 }
 
 #zsh-syntax-highlighting
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
 
-eval "$(zoxide init zsh)"
-
-source "${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

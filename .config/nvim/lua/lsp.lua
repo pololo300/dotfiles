@@ -16,6 +16,7 @@ require("conform").setup({
 		json = { "prettier" },
 		lua = { "stylua " },
 		markdown = { "prettier" },
+		toml = { "tomli" },
 	},
 })
 

@@ -22,6 +22,11 @@ vim.opt.timeoutlen = 300
 vim.opt.ttimeoutlen = 10
 vim.opt.wrap = false
 
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search
+-- term
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 -- rounded panels
 vim.opt.winborder = "rounded"
 
