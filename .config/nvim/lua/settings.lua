@@ -31,6 +31,9 @@ vim.o.smartcase = true
 vim.opt.winborder = "rounded"
 
 vim.g.coneallevel = 1
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildignore = "*.o,*.obj,*.pyc,*.class,*.swp,*.bak"
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

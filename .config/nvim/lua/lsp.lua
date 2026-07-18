@@ -3,10 +3,24 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 })
 
 require("mason").setup({})
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({})
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"clang-format",
+		"lua-language-server",
+		"isort",
+		"marksman",
+		"prettier",
+		"pyright",
+		"ruff",
+		"stylua",
+		"tombi",
+	},
+})
 
 vim.diagnostic.config({ virtual_text = true })
 
@@ -14,9 +28,11 @@ require("conform").setup({
 	formatters_by_ft = {
 		python = { "isort", "ruff_format" },
 		json = { "prettier" },
-		lua = { "stylua " },
+		lua = { "stylua" },
 		markdown = { "prettier" },
-		toml = { "tomli" },
+		toml = { "tombi" },
+		sql = { "sqruff" },
+		c = { "clang-format" },
 	},
 })
 

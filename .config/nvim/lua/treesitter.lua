@@ -3,7 +3,7 @@ vim.pack.add({
 })
 
 require("nvim-treesitter").setup({
-	ensure_installed = { "markdown", "markdown_inline", "python" },
+	auto_install = true,
 	highlight = {
 		enable = true,
 		-- Disable treesitter for specific injections that conflict with LSP

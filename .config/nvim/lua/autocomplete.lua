@@ -1,10 +1,10 @@
 vim.pack.add({
-	{ src = "https://github.com/saghen/blink.cmp" },
+        { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range'*' }
 })
 
 require("blink.cmp").setup({
-	fuzzy = { implementation = "prefer_rust_with_warning" },
-	signature = { enabled = true },
+  fuzzy = { implementation = "lua" },
+  signature = { enabled = true },
 	keymap = {
 		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 		["<C-e>"] = { "hide", "fallback" },
@@ -34,9 +34,20 @@ require("blink.cmp").setup({
 	},
 
 	cmdline = {
+		enabled = true,
 		keymap = {
 			preset = "inherit",
 			["<CR>"] = { "accept_and_enter", "fallback" },
+		},
+		completion = {
+			menu = {
+				auto_show = function(_)
+					-- only auto-show for ':' commands, not '/' or '?' search
+					return vim.fn.getcmdtype() == ":"
+				end,
+			},
+			list = { selection = { preselect = false, auto_insert = true } },
+			ghost_text = { enabled = true },
 		},
 	},
 
