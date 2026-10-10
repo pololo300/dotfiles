@@ -1,12 +1,10 @@
-
 # quick launcher for tmux-sessionizer
 bindkey -s ^f "tmux-sessionizer\n"
-
-
 
 # Auto-attach / start tmux for interactive shells (don't run inside scripts)
 # Only run when connected to a real terminal and not already inside tmux.
 # Uses session name 'main' — adjust if you prefer another name.
+tmux new-session -s yazi 2>/dev/null
 if [[ -t 1 && -n $PS1 && -z "$TMUX" ]]; then
   if command -v tmux >/dev/null 2>&1; then
     tmux attach-session -t main 2>/dev/null || tmux new-session -s main
@@ -24,6 +22,10 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:/snap/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/18/bin:$PATH
+export PATH="$PATH:$HOME/oracle/instantclient_23_26"
+
+export DYLD_LIBRARY_PATH="$HOME/oracle/instantclient_23_26:$DYLD_LIBRARY_PATH"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -67,7 +69,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -88,41 +90,6 @@ ENABLE_CORRECTION="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-export VENV_HOME="$HOME/.virtualenvs"
-[[ -d $VENV_HOME ]] || mkdir $VENV_HOME
-
-lsvenv() {
-  ls -1 $VENV_HOME
-}
-
-venv() {
-  if [ $# -eq 0 ]
-    then
-      echo "Please provide venv name"
-    else
-      source "$VENV_HOME/$1/bin/activate"
-  fi
-}
-
-mkvenv() {
-  if [ $# -eq 0 ]
-    then
-      echo "Please provide venv name"
-    else
-      python3 -m venv $VENV_HOME/$1
-  fi
-}
-
-rmvenv() {
-  if [ $# -eq 0 ]
-    then
-      echo "Please provide venv name"
-    else
-      rm -r $VENV_HOME/$1
-  fi
-}
-
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -131,7 +98,7 @@ rmvenv() {
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 alias tiler=~/tfg/tiler/target/release/tiler
 alias wake-server="wakeonlan 70:f3:95:05:b5:66"
 alias lgit="lazygit"
-alias ldoc="sudo /home/linuxbrew/.linuxbrew/bin/lazydocker"
+alias sv="source .venv/bin/activate"
 # in ~/.zshrc
 vpn() {
   ~/code/scripts/vpn.sh
@@ -159,6 +126,24 @@ alias sampler='sampler -c ~/.config/sampler/config.yml'
 # vi mode 
 bindkey -v
 export KEYTIMEOUT=1
+
+# Sync system clipboard with zsh vi mode
+# Copy to clipboard in visual mode
+function zvm_vi_yank() {
+  zvm_yank
+  echo -en "${CUTBUFFER}" | pbcopy
+}
+
+# Paste from clipboard
+function zvm_vi_put_after() {
+  CUTBUFFER=$(pbpaste)
+  zvm_put_after
+}
+
+function zvm_vi_put_before() {
+  CUTBUFFER=$(pbpaste)
+  zvm_put_before
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -172,12 +157,19 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-#zsh-syntax-highlighting
-source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fpath=(~/.zsh/completions $fpath)
-autoload -U compinit && compinit
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/pros/.oh-my-zsh/custom/plugins/zsh-system-clipboar/zsh-system-clipboard.zsh
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+eval "$(op completion zsh)"; compdef _op op
+
+# opencode
+export PATH=/Users/pros/.opencode/bin:$PATH

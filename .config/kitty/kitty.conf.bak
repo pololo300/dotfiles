@@ -1,79 +1,81 @@
+# vim:ft=kitty
+background_opacity 0.9
+background_blur 30
+dynamic_background_opacity yes
+font_size 20.0
 
-# Based on https://github.com/morhetz/gruvbox by morhetz <morhetz@gmail.com>
-# Adapted to kitty by wdomitrz <witekdomitrz@gmail.com>
+map alt+tab send_text all \x1b[1;2C
+map alt+shift+tab send_text all \x1b[1;2D
 
-foreground #a9b1d6
-background #1a1b26
+cursor                  #928374
+cursor_text_color       background
 
-# Black
-color0 #414868
-color8 #414868
+url_color               #458588
 
-# Red
-color1 #f7768e
-color9 #f7768e
+visual_bell_color       #689d6a
+bell_border_color       #689d6a
 
-# Green
-color2  #73daca
-color10 #73daca
+active_border_color     #b16286
+inactive_border_color   #1d2021
 
-# Yellow
-color3  #e0af68
-color11 #e0af68
+foreground              #3c3836
+background              #fbf1c7
+selection_foreground    #928374
+selection_background    #3c3836
 
-# Blue
-color4  #7aa2f7
-color12 #7aa2f7
+active_tab_foreground   #282828
+active_tab_background   #928374
+inactive_tab_foreground #7c6f64
+inactive_tab_background #ebdbb2
 
-# Magenta
-color5  #bb9af7
-color13 #bb9af7
+# white (bg3/bg4)
+color0                  #bdae93
+color8                  #a89984
 
-# Cyan
-color6  #7dcfff
-color14 #7dcfff
+# red
+color1                  #cc241d
+color9                  #9d0006
 
-# White
-color7  #c0caf5
-color15 #c0caf5
+# green
+color2                  #98971a
+color10                 #79740e
 
-# Cursor
-cursor #c0caf5
-cursor_text_color #1a1b26
+# yellow
+color3                  #d79921
+color11                 #b57614
 
-# Selection highlight
-selection_foreground none
-selection_background #28344a
+# blue
+color4                  #458588
+color12                 #076678
 
-# The color for highlighting URLs on mouse-over
-url_color #9ece6a
+# purple
+color5                  #b16286
+color13                 #8f3f71
 
-# Window borders
-active_border_color #3d59a1
-inactive_border_color #101014
-bell_border_color #e0af68
+# aqua
+color6                  #689d6a
+color14                 #427b58
 
-# Tab bar
-tab_bar_style fade
-tab_fade 1
-active_tab_foreground   #3d59a1
-active_tab_background   #16161e
-active_tab_font_style   bold
-inactive_tab_foreground #787c99
-inactive_tab_background #16161e
-inactive_tab_font_style bold
-tab_bar_background #101014
+# black (fg4/fg3)
+color7                  #7c6f64
+color15                 #665c54
 
-# Title bar
-macos_titlebar_color #16161e
+# nvim scrollback
+allow_remote_control socket-only
+listen_on unix:/tmp/kitty
+shell_integration enabled
 
-# Storm
-# background #24283b
-# cursor_text_color #24283b
-# active_tab_background   #1f2335
-# inactive_tab_background #1f2335
-# macos_titlebar_color #1f2335
+# kitty-scrollback.nvim Kitten alias
+action_alias kitty_scrollback_nvim kitten /home/pol/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py
 
+# Browse scrollback buffer in nvim
+map kitty_mod+h kitty_scrollback_nvim
+
+# Browse output of the last shell command in nvim
+map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
+
+# Show clicked command output in nvim
+mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output  : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
 
 # BEGIN_KITTY_FONTS
 font_family      family='JetBrains Mono' style=Light

@@ -30,6 +30,13 @@ vim.o.smartcase = true
 -- rounded panels
 vim.opt.winborder = "rounded"
 
+-- treesitter-based code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99 -- start with everything unfolded
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 vim.g.coneallevel = 1
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
